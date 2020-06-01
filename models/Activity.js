@@ -15,7 +15,10 @@ Activity.init({
   category: {
     type: DataTypes.STRING,
     allowNull: true
-  }
+  },
+  {
+    timestamps: false
+  })
 }, { sequelize, modelName: 'activity' });
 
 
