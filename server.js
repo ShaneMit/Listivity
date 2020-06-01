@@ -8,10 +8,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-// app.use(require('./routes'))
+app.use(require('./routes'))
+
+require('./models')
 
 require('./connection')
-  // .sync({ force: true })
   .sync()
   .then(() => app.listen(3000, () => console.log('http://localhost:3000')))
   .catch(err => console.error(err))
