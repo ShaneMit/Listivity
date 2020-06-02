@@ -18,6 +18,18 @@ router.get('/users/:id', (req, res) => {
     .catch(err => console.error(err))
 })
 
+router.get('/users/:id', (req, res) => {
+  User.findOne({ id: req.params.id, include: [Eat] })
+    .then(user => res.json(user))
+    .catch(err => console.error(err))
+})
+
+router.get('/users/:id', (req, res) => {
+  User.findOne({ id: req.params.id, include: [Entertain] })
+    .then(user => res.json(user))
+    .catch(err => console.error(err))
+})
+
 router.post('/users', (req, res) => {
   User.create(req.body)
     .then(() => res.sendStatus(200))
