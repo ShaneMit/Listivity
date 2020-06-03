@@ -39,7 +39,7 @@ document.getElementById('signUpButton').addEventListener('click', function () {
 
 
   document.getElementById('signInButton').addEventListener('click', event => {
-    event.preventDefault()
+    // event.preventDefault()
     axios.get('/api/users')
       .then(({ data }) => {
 
@@ -59,11 +59,11 @@ document.getElementById('signUpButton').addEventListener('click', function () {
           return;
         } else {
           localStorage.setItem('user', userId);
+          location.href = '/'
         }
 
       })
       .catch(err => console.log(err));
-    document.getElementById('usernameSignIn').value = ''
     })
   // });
   
