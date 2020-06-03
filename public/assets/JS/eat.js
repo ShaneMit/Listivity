@@ -1,4 +1,4 @@
-document.getElementById('eatAdd').addEventListener('click', event => {
+document.getElementById('eatsAdd').addEventListener('click', event => {
   event.preventDefault()
   axios.post('/api/eats', {
     name: document.getElementById('eatsName').value,
@@ -9,7 +9,7 @@ document.getElementById('eatAdd').addEventListener('click', event => {
       let eatElem = document.createElement('div')
       eatElem.className = 'card d-flex flex-column justify-content-center'
       eatElem.innerHTML = `
-        < div class="card-body" >
+        <div class="card-body">
     <div class="card-info">
       <h3 class="card-title">${document.getElementById('eatsName').value}</h3>
       <p class="card-description">${document.getElementById('eatsDesc').value}</p>

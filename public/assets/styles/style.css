@@ -25,20 +25,41 @@
 .addToggle {
   font-size: 3em;
   color: #00d025;
+  display: block;
+  transition: all .5s;
+  transform: rotate(0deg);
+  margin: 10px 0;
 }
 
 .addToggle:hover {
   font-size: 3em;
   color: #00d025;
+  text-decoration: none;
 }
 
 .card {
   border: 1px solid #000;
   border-top: none;
   padding: 30px 0;
+  justify-content: center;
 }
 
-.card:nth-child(3) {
+.card-body {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.cardActions {
+  max-width: 50px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.card:nth-of-type(1) {
+  border: none;
+}
+
+.card:nth-of-type(2) {
   border-top: 1px solid #000;
 }
 

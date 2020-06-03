@@ -13,7 +13,7 @@
 <body>
   <header>
     <nav class="navbar navbar-light login-nav">
-      <a class="navbar-brand"><img src="./assets/images/Listivity.svg" alt="Listivity" id="logo"
+      <a class="navbar-brand" href="/"><img src="./assets/images/Listivity.svg" alt="Listivity" id="logo"
           style="width: 200px;"></a>
       <div class="nav-links d-flex flex-row align align-items-center">
         <a href="#copy" class="d-none" style="color: black;">
@@ -46,13 +46,9 @@
         <h2 class="m-5">Sign-In</h2>
         <div class="form-group">
           <label for="exampleInputEmail1">Username</label>
-          <input type="username" class="form-control" id="usernameSignUp" aria-describedby="userName">
+          <input type="username" class="form-control" id="usernameSignIn" aria-describedby="userName">
         </div>
-        <div class="form-group d-none">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Sign-in</button>
+        <button id="signInButton" type="submit" class="btn btn-primary">Sign-in</button>
       </form>
     </section>
     <section class="signUp">
@@ -62,11 +58,7 @@
           <label for="exampleInputEmail1">Username</label>
           <input type="username" class="form-control" id="usernameSignUp" aria-describedby="userName">
         </div>
-        <div class="form-group d-none">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button id="signUpButton" type="submit" class="btn btn-primary">Register</button>
       </form>
     </section>
   </main>
@@ -79,6 +71,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./assets/JS/login.js"></script>
 </body>
 
 </html>
