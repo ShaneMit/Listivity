@@ -23,6 +23,7 @@ document.getElementById('signUpButton').addEventListener('click', function () {
         })
           .then(({ data }) => {
             localStorage.setItem('user', data.id)
+            window.location.replace('/eat')
           })
           .catch(err => console.error(err))
       }
