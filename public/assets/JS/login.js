@@ -10,6 +10,7 @@ document.getElementById('signUpButton').addEventListener('click', function () {
       for (i = 0; i < data.length; i++) {
         if (document.getElementById('usernameSignUp').value == data[i].username) {
           userExists = true;
+
         }
       }
 
@@ -21,38 +22,47 @@ document.getElementById('signUpButton').addEventListener('click', function () {
           username: document.getElementById('usernameSignUp').value
         })
           .then(({ data }) => {
-
-            axios.get('/api/users')
-
-              .then(({ data }) => {
-                let userId;
-
-                for (i = 0; i < data.length; i++) {
-                  if (document.getElementById('usernameSignUp').value == data[i].username) {
-                    userId = data[i].id;
-                  };
-                }
-
-                localStorage.setItem('userId', userId);
-
-                signIn(userId);
-
-              })
-              .catch(err => console.log(err));
-
+            localStorage.setItem('user', data.id)
           })
           .catch(err => console.error(err))
       }
 
     })
     .catch(err => console.log(err));
-
+  document.getElementById('usernameSignUp').value = ''
 });
 
 
 
 
 
-const signIn = function (id) {
 
-}
+  document.getElementById('signInButton').addEventListener('click', event => {
+    event.preventDefault()
+    axios.get('/api/users')
+      .then(({ data }) => {
+
+        let userExists;
+        let userId;
+
+        for (i = 0; i < data.length; i++) {
+          if (document.getElementById('usernameSignIn').value == data[i].username) {
+            userExists = true;
+            userId = data[i].id;
+          }
+        }
+
+        if (!userExists) {
+          alert('Username does not exists, please sign up')
+          document.getElementById('usernameSignIn').value = ''
+          return;
+        } else {
+          localStorage.setItem('user', userId);
+        }
+
+      })
+      .catch(err => console.log(err));
+    document.getElementById('usernameSignIn').value = ''
+    })
+  // });
+  
