@@ -2,51 +2,57 @@ document.getElementById('signUpButton').addEventListener('click', function () {
 
   event.preventDefault();
 
-  axios.post('/api/users', {
-    username: document.getElementById('usernameSignUp').value
-  })
+  axios.get('/api/users')
     .then(({ data }) => {
-      console.log(data);
 
-      axios.get('/api/users')
+      let userExists;
 
-        .then(({ data }) => {
-          let userId;
+      for (i = 0; i < data.length; i++) {
+        if (document.getElementById('usernameSignUp').value == data[i].username) {
+          userExists = true;
+        }
+      }
 
-          for (i = 0; i < data.length; i++) {
-            if (document.getElementById('usernameSignUp').value == data[i].username) {
-              userId = data[i].id;
-            };
-          }
-
-          localStorage.setItem('userId', userId);
-
+      if (userExists) {
+        alert('That user already exists.')
+        return;
+      } else {
+        axios.post('/api/users', {
+          username: document.getElementById('usernameSignUp').value
         })
-        .catch(err => console.log(err));
+          .then(({ data }) => {
+
+            axios.get('/api/users')
+
+              .then(({ data }) => {
+                let userId;
+
+                for (i = 0; i < data.length; i++) {
+                  if (document.getElementById('usernameSignUp').value == data[i].username) {
+                    userId = data[i].id;
+                  };
+                }
+
+                localStorage.setItem('userId', userId);
+
+                signIn(userId);
+
+              })
+              .catch(err => console.log(err));
+
+          })
+          .catch(err => console.error(err))
+      }
 
     })
-    .catch(err => console.error(err))
+    .catch(err => console.log(err));
+
 });
 
 
 
 
 
+const signIn = function (id) {
 
-
-
-// document.getElementById('signInButton').addEventListener('click', function () {
-
-//   event.preventDefault();
-//   let username = document.getElementById('usernameSignIn').value;
-
-
-
-//   axios.get('/api/users/1', {
-
-//   })
-//     .then(({ data }) => {
-//       console.log(data);
-//     })
-//     .catch(err => console.error(err))
-// });
+}

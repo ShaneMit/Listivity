@@ -32,7 +32,7 @@ router.get('/users/:id', (req, res) => {
 
 router.post('/users', (req, res) => {
   User.create(req.body)
-    .then(() => res.send(req.body))
+    .then((user) => res.json(user))
     .catch(err => console.error(err))
 })
 
