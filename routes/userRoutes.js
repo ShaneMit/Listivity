@@ -13,7 +13,7 @@ router.get('/users', (req, res) => {
 
 // GET one user
 router.get('/users/:id', (req, res) => {
-   User.findOne({ where: { id: req.params.id }, include: [Activity, Eat, Entertain] })
+  User.findOne({ where: { id: req.params.id }, include: [Activity, Eat, Entertain] })
     .then(user => res.json(user))
     .catch(err => console.error(err))
 })
@@ -32,7 +32,7 @@ router.get('/users/:id', (req, res) => {
 
 router.post('/users', (req, res) => {
   User.create(req.body)
-    .then(() => res.sendStatus(200))
+    .then(() => res.send(req.body))
     .catch(err => console.error(err))
 })
 
