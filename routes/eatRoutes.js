@@ -18,7 +18,7 @@ router.get('/eats/:id', (req, res) => {
 
 router.post('/eats', (req, res) => {
   Eat.create(req.body)
-    .then(() => res.sendStatus(200))
+    .then((eat) => res.json(eat))
     .catch(err => console.error(err))
 })
 

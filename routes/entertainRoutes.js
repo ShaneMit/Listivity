@@ -18,7 +18,7 @@ router.get('/entertains/:id', (req, res) => {
 
 router.post('/entertains', (req, res) => {
   Entertain.create(req.body)
-    .then(() => res.sendStatus(200))
+    .then((entertain) => res.json(entertain))
     .catch(err => console.error(err))
 })
 
