@@ -69,7 +69,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" onclick="saveEdit(this.dataset.id)" id="saveChanges">Save changes</button>
           </div>
         </div>
       </div>
@@ -188,7 +188,7 @@
           </div>
         </div>
         <div class="tab-pane fade text-center" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-          <div id="entertainmentList">
+          <div id="entertainsList">
             <a class="addToggle" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
               aria-controls="collapseExample">
               +
@@ -200,17 +200,17 @@
                   <form class="text-center">
                     <div class="form-group">
                       <label for="title">Title</label>
-                      <input type="text" class="form-control" id="entertainmentsName" aria-describedby="emailHelp">
+                      <input type="text" class="form-control" id="entertainsName" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group">
                       <label for="Description">Description</label>
-                      <input type="text" class="form-control" id="entertainmentsDesc">
+                      <input type="text" class="form-control" id="entertainsDesc">
                     </div>
                     <div class="form-group">
                       <label for="Type">Type</label>
-                      <input type="text" class="form-control" id="entertainmentsCategory">
+                      <input type="text" class="form-control" id="entertainsCategory">
                     </div>
-                    <button id="entertainmentAdd" type="submit" class="btn btn-primary">Add</button>
+                    <button id="entertainsAdd" type="submit" class="btn btn-primary">Add</button>
                   </form>
                 </div>
               </div>
