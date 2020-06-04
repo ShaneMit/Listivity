@@ -41,6 +41,39 @@
     </nav>
   </header>
   <main class="mt-4">
+    <div class="modal fade" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit Item</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="text-center">
+              <div class="form-group">
+                <label for="Title">Title</label>
+                <input type="text" class="form-control" id="editName">
+              </div>
+              <div class="form-group">
+                <label for="Description">Description</label>
+                <input type="description" class="form-control" id="editDesc">
+              </div>
+              <div class="form-group">
+                <label for="Type">Type</label>
+                <input type="type" class="form-control" id="editCategory">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <section>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
