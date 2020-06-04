@@ -18,7 +18,7 @@ router.get('/activities/:id', (req, res) => {
 
 router.post('/activities', (req, res) => {
   Activity.create(req.body)
-    .then(() => res.sendStatus(200))
+    .then((activity) => res.json(activity))
     .catch(err => console.error(err))
 })
 
