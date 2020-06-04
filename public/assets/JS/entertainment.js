@@ -34,7 +34,11 @@ document.getElementById('entertainmentAdd').addEventListener('click', event => {
         </svg>
       </div>
 `
-      document.getElementById('entertainmentList').appendChild(entertainmentElem)
+      document.getElementById('entertainmentList').appendChild(entertainmentElem);
+      document.getElementById('entertainmentsName').value = '';
+      document.getElementById('entertainmentsDesc').value = '';
+      document.getElementById('entertainmentsCategory').value = '';
+
 
     })
 

@@ -33,7 +33,10 @@ document.getElementById('eatsAdd').addEventListener('click', event => {
         </svg>
       </div>
 `
-      document.getElementById('eatList').appendChild(eatElem)
+      document.getElementById('eatList').appendChild(eatElem);
+      document.getElementById('eatsName').value = '';
+      document.getElementById('eatsDesc').value = '';
+      document.getElementById('eatsCategory').value = '';
 
     })
 
