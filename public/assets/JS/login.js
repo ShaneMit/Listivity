@@ -10,7 +10,7 @@ document.getElementById('signUpButton').addEventListener('click', function () {
       for (i = 0; i < data.length; i++) {
         if (document.getElementById('usernameSignUp').value == data[i].username) {
           userExists = true;
-
+          return;
         }
       }
 
@@ -23,19 +23,14 @@ document.getElementById('signUpButton').addEventListener('click', function () {
         })
           .then(({ data }) => {
             localStorage.setItem('user', data.id)
-            window.location.replace('/eat')
+            location.href = '/'
           })
           .catch(err => console.error(err))
       }
 
     })
     .catch(err => console.log(err));
-  document.getElementById('usernameSignUp').value = ''
 });
-
-
-
-
 
 
   document.getElementById('signInButton').addEventListener('click', event => {
