@@ -68,6 +68,10 @@
   font-size: 2em;
 }
 
+.bi-trash:hover, .bi-pencil-square:hover {
+  cursor: pointer;
+}
+
 .btn-primary {
   background-color: #50baea;
   border: none;
