@@ -12,7 +12,7 @@ Eat.init({
     type: DataTypes.STRING,
     allowNull: true
   },
-  cuisine: {
+  category: {
     type: DataTypes.STRING,
     allowNull: true
   }
