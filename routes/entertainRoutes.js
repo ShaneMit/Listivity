@@ -24,7 +24,7 @@ router.post('/entertains', (req, res) => {
 
 router.put('/entertains/:id', (req, res) => {
   Entertain.update(req.body, { where: { id: req.params.id } })
-    .then(() => res.sendStatus(200))
+    .then((data) => res.json(data))
     .catch(err => console.error(err))
 })
 
