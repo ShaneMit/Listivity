@@ -1,10 +1,3 @@
-if (localStorage.getItem('user')) {
-  axios.get(`/api/users/${localStorage.getItem('user')}`)
-    .then(({ data }) => {
-      console.log(data)
-    })
-}
-
 document.body.addEventListener('click', function (event) {
   if (event.target.classList.contains("addToggle")) {
 
