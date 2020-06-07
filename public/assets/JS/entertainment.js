@@ -26,7 +26,8 @@ function addItem() {
   axios.post(`/api/${apiTab}`, {
     name: document.getElementById(`${apiTab}Name`).value,
     description: document.getElementById(`${apiTab}Desc`).value,
-    category: document.getElementById(`${apiTab}Category`).value
+    category: document.getElementById(`${apiTab}Category`).value,
+    userId: localStorage.getItem('user')
   })
     .then(({ data }) => {
       console.log(data)
