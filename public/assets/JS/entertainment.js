@@ -34,6 +34,10 @@ function cardBody(apiTab, data, title, desc, type) {
     document.getElementById(`${apiTab}Category`).value = '';
 };
 
+document.getElementById('signOut').addEventListener('click', event => {
+  localStorage.removeItem('user')
+})
+
 if (!localStorage.getItem('user')) {
   location.href = '/login.html'
 } else {
