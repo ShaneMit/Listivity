@@ -1,5 +1,9 @@
 let apiTab = 'activities';
 
+if (!localStorage.getItem('user')) {
+  location.href = '/login.html'
+}
+
 document.querySelectorAll('.nav-link').forEach(tab => {
   tab.addEventListener('click', function (event) {
     if (event.target.textContent === 'Entertain') {
