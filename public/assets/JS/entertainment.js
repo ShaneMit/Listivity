@@ -1,44 +1,47 @@
-let apiTab
+let apiTab = 'activities';
 
-// let getTab = function () {
-  document.getElementById('')
-  let activeTab = document.getElementsByClassName('nav-link active')[0].textContent
-  console.log(activeTab)
+document.querySelectorAll('.nav-link').forEach(tab => {
+  tab.addEventListener('click', function (event) {
+    if (event.target.textContent === 'Entertain') {
+      apiTab = 'entertains'
+      console.log(apiTab)
+    } else if (event.target.textContent === 'Dining') {
+      apiTab = 'eats'
+      console.log(apiTab)
+    } else if (event.target.textContent === 'Activities') {
+      apiTab = 'activities'
+      console.log(apiTab)
+    };
+    console.log(apiTab);
+  });
+});
 
-  if (activeTab === 'Entertain') {
-    apiTab = 'entertains'
-    console.log(apiTab)
-  } else if (activeTab === 'Dining') {
-    apiTab = 'eats'
-    console.log(apiTab)
-  } else if (activeTab === 'Activities') {
-    apiTab = 'activities'
-    console.log(apiTab)
-  }
-// }
 
+document.querySelectorAll('.addItemBtn').forEach(button => {
+  button.addEventListener('click', addItem);
+})
 
-document.getElementById('entertainsAdd').addEventListener('click', event => {
+function addItem() {
   event.preventDefault()
-  axios.post('/api/entertains', {
-    name: document.getElementById('entertainsName').value,
-    description: document.getElementById('entertainsDesc').value,
-    category: document.getElementById('entertainsCategory').value
+  axios.post(`/api/${apiTab}`, {
+    name: document.getElementById(`${apiTab}Name`).value,
+    description: document.getElementById(`${apiTab}Desc`).value,
+    category: document.getElementById(`${apiTab}Category`).value
   })
     .then(({ data }) => {
       console.log(data)
-      let entertainsElem = document.createElement('div')
-      entertainsElem.className = 'card d-flex flex-column justify-content-center'
-      entertainsElem.id = `entertains-${data.id}`
-      entertainsElem.innerHTML = `
+      let activitiesElem = document.createElement('div')
+      activitiesElem.className = 'card d-flex flex-column justify-content-center'
+      activitiesElem.id = `${apiTab}-${data.id}`
+      activitiesElem.innerHTML = `
       <div class="card-body">
         <div class="card-info">
-        <h3 class="card-title">${document.getElementById('entertainsName').value}</h3>
-        <p class="card-description">${document.getElementById('entertainsDesc').value}</p>
-        <p class="card-type">${document.getElementById('entertainsCategory').value}</p>
+        <h3 class="card-title">${document.getElementById(`${apiTab}Name`).value}</h3>
+        <p class="card-description">${document.getElementById(`${apiTab}Desc`).value}</p>
+        <p class="card-type">${document.getElementById(`${apiTab}Category`).value}</p>
         </div>
         <div class="cardActions d-flex justify-content-between">
-          <svg class="bi bi-trash" onclick="deleteEntertainment(this.dataset.id)" data-id=${data.id} width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor"
+          <svg class="bi bi-trash" onclick="deleteActivity(this.dataset.id)" data-id=${data.id} width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor"
             xmlns="http://www.w3.org/2000/svg">
             <path
               d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
@@ -54,16 +57,14 @@ document.getElementById('entertainsAdd').addEventListener('click', event => {
           </svg>
         </div>
         `
-      document.getElementById('entertainsList').appendChild(entertainsElem);
-      document.getElementById('entertainsName').value = '';
-      document.getElementById('entertainsDesc').value = '';
-      document.getElementById('entertainsCategory').value = '';
-
-
+      document.getElementById(`${apiTab}List`).appendChild(activitiesElem);
+      document.getElementById(`${apiTab}Name`).value = '';
+      document.getElementById(`${apiTab}Desc`).value = '';
+      document.getElementById(`${apiTab}Category`).value = '';
     })
 
     .catch(err => console.error(err))
-})
+};
 
 let editCard = function (id) {
   document.getElementById('saveChanges').dataset.id = id
@@ -73,7 +74,6 @@ let editCard = function (id) {
   document.getElementById('editName').value = cardTitle[0].textContent
   document.getElementById('editDesc').value = cardText[0].textContent
   document.getElementById('editCategory').value = cardText[1].textContent
-
 }
 
 let saveEdit = function (id) {
@@ -88,13 +88,25 @@ let saveEdit = function (id) {
     description: document.getElementById('editDesc').value,
     category: document.getElementById('editCategory').value
   })
-    .then((res) => console.log(res))
+    .then((res) => {
+      updateCard(id);
+    })
     .catch(err => console.error(err))
 }
 
-let deleteEntertainment = function (id) {
-  axios.delete(`/api/entertains/${id}`)
-    .then(() => { document.getElementById(`entertains-${id}`).remove() })
+let updateCard = function (id) {
+  let card = document.getElementById(`${apiTab}-${id}`)
+  let cardTitle = card.getElementsByTagName('h3')
+  let cardText = card.getElementsByTagName('p')
+  cardTitle[0].textContent = document.getElementById('editName').value
+  cardText[0].textContent = document.getElementById('editDesc').value
+  cardText[1].textContent = document.getElementById('editCategory').value
+}
+
+let deleteActivity = function (id) {
+  // getTab();
+  axios.delete(`/api/${apiTab}/${id}`)
+    .then(() => { document.getElementById(`${apiTab}-${id}`).remove() })
     .catch(err => console.error(err))
 }
 
