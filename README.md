@@ -29,7 +29,7 @@ The user's inputs are stored in a MYSQL database and retrieved the next time a u
 
 ## Demo
 
-(./public/assets/images/listivity.gif)
+![Listivity Gif](./public/assets/images/listivity.gif)
 
 <br>
 
