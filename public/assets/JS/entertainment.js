@@ -96,15 +96,16 @@ function addItem() {
     .catch(err => console.error(err))
 };
 
-// functionality for the edit card button, pulls up the modal along with user's saved input from the card 
+// functionality for the edit card button, pulls up the modal along with user's saved input from the card
 let editCard = function (id) {
-  document.getElementById('saveChanges').dataset.id = id
-  let card = document.getElementById(`${apiTab}-${id}`)
-  let cardTitle = card.getElementsByTagName('h3')
-  let cardText = card.getElementsByTagName('p')
-  document.getElementById('editName').value = cardTitle[0].textContent
-  document.getElementById('editDesc').value = cardText[0].textContent
-  document.getElementById('editCategory').value = cardText[1].textContent
+  document.getElementById('saveChanges').dataset.id = id;
+  let card = document.getElementById(`${apiTab}-${id}`);
+  let cardTitle = card.getElementsByTagName('h3');
+  let cardText = card.getElementsByTagName('p');
+  document.getElementById('editName').value = cardTitle[0].textContent;
+  document.getElementById('editDesc').value = cardText[0].textContent;
+  document.getElementById('editCategory').value = cardText[1].textContent;
+  document.getElementById('editModalCenter').classList.add('animate__animated', 'animate__backInRight');
 };
 
 // functionality for the 'save edit' button on the edit modal. Updates the card based on user's edits
@@ -124,8 +125,8 @@ let saveEdit = function (id) {
     .catch(err => console.error(err))
 };
 
-// called upon in the 'saveEdit' function. 
-//the 'updateCard' function that sends edited information back to database 
+// called upon in the 'saveEdit' function.
+//the 'updateCard' function that sends edited information back to database
 let updateCard = function (id) {
   let card = document.getElementById(`${apiTab}-${id}`)
   let cardTitle = card.getElementsByTagName('h3')
@@ -145,6 +146,10 @@ let deleteActivity = function (id) {
 
 // functionality for shuffle button, pulls from user's various cards and presents the use with a randomly generated option
 document.getElementById('shuffleButtons').addEventListener('click', function () {
+
+  document.getElementById('shuffleIcon').classList = 'animate__animated animate__shakeX';
+  document.getElementById('logo').classList = 'animate__animated animate__shakeX';
+  document.getElementById('navGetActivityBtn').classList.add('animate__animated', 'animate__shakeX');
 
   document.getElementById('randomModalBody').innerHTML = "";
 
@@ -169,4 +174,11 @@ document.getElementById('shuffleButtons').addEventListener('click', function () 
   let cardChoice = categoryChoice[Math.floor(Math.random() * categoryChoice.length)];
 
   document.getElementById('randomModalBody').innerHTML = cardChoice.innerHTML;
+
+  setTimeout(function () {
+    document.getElementById('shuffleIcon').classList = '';
+    document.getElementById('logo').classList = '';
+    document.getElementById('navGetActivityBtn').classList.remove('animate__animated animate__shakeX');
+  }, 2000)
+
 });
