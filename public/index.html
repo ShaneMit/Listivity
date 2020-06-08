@@ -13,6 +13,7 @@
 
 <body>
   <header>
+    <!-- nav bar -->
     <nav class="navbar navbar-light ">
       <a class="navbar-brand" href="/"><img src="./assets/images/Listivity.svg" alt="Listivity" id="logo"
           style="width: 200px;"></a>
@@ -37,7 +38,8 @@
     </nav>
   </header>
   <main class="mt-4">
-    <div class="modal" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle"
+    <!-- modal to edit card -->
+    <div class="modal fade" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -72,6 +74,7 @@
         </div>
       </div>
     </div>
+    <!-- modal to select a random card -->
     <div class="modal fade" id="randomActivityModal" tabindex="-1" role="dialog" aria-labelledby="randomActivityModal"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -90,6 +93,7 @@
         </div>
       </div>
     </div>
+    <!-- tabs for each category of cards -->
     <section>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -105,7 +109,7 @@
             aria-selected="false">Entertain</a>
         </li>
       </ul>
-
+      <!-- + button, allows users to add to activity tab -->
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="text-center">
@@ -140,6 +144,7 @@
           </div>
           <div id="activitiesList"></div>
         </div>
+        <!-- + button, allows users to add to eats tab -->
         <div class="tab-pane fade text-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <div>
             <a class="addToggle" data-toggle="collapse" href="#collapseEats" role="button" aria-expanded="false"
@@ -173,7 +178,7 @@
           </div>
           <div id="eatsList"></div>
         </div>
-
+        <!-- + button, allows users to add to entertain tab -->
         <div class="tab-pane fade text-center" id="contact" role="tabpanel" aria-labelledby="contact-tab">
           <div>
             <a class="addToggle" data-toggle="collapse" href="#collapseEntertainment" role="button"
@@ -210,6 +215,7 @@
       </div>
     </section>
   </main>
+  <!-- javascript tags -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>

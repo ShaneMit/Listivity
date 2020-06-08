@@ -28,7 +28,8 @@ If user's to do not want to select an activity themselves, they are able to clic
 The user's inputs are stored in a MYSQL database and retrieved the next time a user logs into their account. 
 
 ## Demo
-<INSERT GIF>
+
+(./public/assets/images/listivity.gif)
 
 <br>
 
