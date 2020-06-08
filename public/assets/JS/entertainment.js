@@ -1,5 +1,6 @@
 let apiTab = 'activities';
 
+// function to build the body of each card based on user's input
 function cardBody(apiTab, data, title, desc, type) {
   let activitiesElem = document.createElement('div')
   activitiesElem.className = 'card d-flex flex-column justify-content-center'
@@ -28,12 +29,14 @@ function cardBody(apiTab, data, title, desc, type) {
           </svg>
         </div>
         `
+  // get each element by the user input and add it to the card body
   document.getElementById(`${apiTab}List`).appendChild(activitiesElem);
   document.getElementById(`${apiTab}Name`).value = '';
   document.getElementById(`${apiTab}Desc`).value = '';
   document.getElementById(`${apiTab}Category`).value = '';
 };
 
+// functionality for the sign out button
 document.getElementById('signOut').addEventListener('click', event => {
   localStorage.removeItem('user')
 })
@@ -51,12 +54,11 @@ if (!localStorage.getItem('user')) {
       }
       for (const entertain in data.entertains) {
         cardBody('entertains', data.entertains[entertain], data.entertains[entertain].name, data.entertains[entertain].description, data.entertains[entertain].category)
-      }
-    })
-}
+      };
+    });
+};
 
-
-
+// functionality for each activity tab that generates a user's input
 document.querySelectorAll('.nav-link').forEach(tab => {
   tab.addEventListener('click', function (event) {
     if (event.target.textContent === 'Entertain') {
@@ -69,11 +71,13 @@ document.querySelectorAll('.nav-link').forEach(tab => {
   });
 });
 
-
+// functionality to the + button at the top of each tab
+// dependent on the 'addItem' function
 document.querySelectorAll('.addItemBtn').forEach(button => {
   button.addEventListener('click', addItem);
-})
+});
 
+// function called in the code above to add new items based on user input
 function addItem() {
   event.preventDefault()
   let title = `${document.getElementById(`${apiTab}Name`).value}`
@@ -92,6 +96,7 @@ function addItem() {
     .catch(err => console.error(err))
 };
 
+// functionality for the edit card button, pulls up the modal along with user's saved input from the card 
 let editCard = function (id) {
   document.getElementById('saveChanges').dataset.id = id
   let card = document.getElementById(`${apiTab}-${id}`)
@@ -100,8 +105,10 @@ let editCard = function (id) {
   document.getElementById('editName').value = cardTitle[0].textContent
   document.getElementById('editDesc').value = cardText[0].textContent
   document.getElementById('editCategory').value = cardText[1].textContent
-}
+};
 
+// functionality for the 'save edit' button on the edit modal. Updates the card based on user's edits
+// dependent on the 'updateCard' function below
 let saveEdit = function (id) {
   let card = document.getElementById(`${apiTab}-${id}`)
   let cardTitle = card.getElementsByTagName('h3')
@@ -115,8 +122,10 @@ let saveEdit = function (id) {
       updateCard(id);
     })
     .catch(err => console.error(err))
-}
+};
 
+// called upon in the 'saveEdit' function. 
+//the 'updateCard' function that sends edited information back to database 
 let updateCard = function (id) {
   let card = document.getElementById(`${apiTab}-${id}`)
   let cardTitle = card.getElementsByTagName('h3')
@@ -124,15 +133,17 @@ let updateCard = function (id) {
   cardTitle[0].textContent = document.getElementById('editName').value
   cardText[0].textContent = document.getElementById('editDesc').value
   cardText[1].textContent = document.getElementById('editCategory').value
-}
+};
 
+// allows user to delete a card, also deletes input from database
 let deleteActivity = function (id) {
   // getTab();
   axios.delete(`/api/${apiTab}/${id}`)
     .then(() => { document.getElementById(`${apiTab}-${id}`).remove() })
     .catch(err => console.error(err))
-}
+};
 
+// functionality for shuffle button, pulls from user's various cards and presents the use with a randomly generated option
 document.getElementById('shuffleButtons').addEventListener('click', function () {
 
   document.getElementById('randomModalBody').innerHTML = "";
