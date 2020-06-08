@@ -29,25 +29,36 @@
       </div>
     </nav>
   </header>
-  <main class="mt-4">
+  <main class="mt-2">
+    <section class="aboutListivity font-weight-light">
+      <span class="font-weight-bold">Listivity</span> helps you keep track of all the things you said you wanted to do.
+      Still can’t decide what
+      to eat, watch,
+      or where to go? Let us decide for you
+    </section>
     <!-- signIn input field and button -->
     <section class="signIn">
-      <form class="text-center" style="max-width: 500px; margin: 0 auto;">
+      <form class="text-center signInForm">
         <h2 class="m-5">Sign-In</h2>
         <div class="form-group">
+          <div id="usernameSignInError" class="alert alert-danger" role="alert" style="display: none;">
+          </div>
           <label for="exampleInputEmail1">Username</label>
-          <input type="username" class="form-control" id="usernameSignIn" aria-describedby="userName">
+          <input type="username" class="form-control" id="usernameSignIn" aria-describedby="userName"
+            onkeypress="return RestrictSpace()">
         </div>
         <button id="signInButton" type="button" class="btn btn-primary">Sign-in</button>
       </form>
     </section>
     <!-- signUp input field and button -->
     <section class="signUp">
-      <form class="text-center" style="max-width: 500px; margin: 0 auto;">
+      <form class="text-center signUpForm">
         <h2 class="m-5">Register</h2>
         <div class="form-group">
+          <div id="usernameSignUpError" class="alert alert-danger" role="alert" style="display: none;"></div>
           <label for="exampleInputEmail1">Username</label>
-          <input type="username" class="form-control" id="usernameSignUp" aria-describedby="userName">
+          <input type="username" class="form-control" id="usernameSignUp" aria-describedby="userName"
+            onkeypress="return RestrictSpace()">
         </div>
         <button id="signUpButton" type="submit" class="btn btn-primary">Register</button>
       </form>
