@@ -1,8 +1,6 @@
 # listivity 
 This interactive activity saver allows a user to write, save and delete activities with in the application.
 
-![Listvity Graphic](/public/assets/images/listivityReadMe.png =150x150)
-
 ## Installation
 The software used to create this generator include: Javascript, Node.js, Animation.CSS, Sequelize, ENV and Express.  
 
