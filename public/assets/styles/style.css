@@ -95,14 +95,40 @@
   background-color: #1992ce;
 }
 
+.login-nav {
+  border-bottom: none;
+}
+
+.aboutListivity {
+  font-size: 1.2em;
+  text-align: center;
+  padding: 10px;
+  background-color: #00d025;
+  color: white;
+  margin: 0 15px;
+  border-radius: .25rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .signIn {
   margin-bottom: 50px;
   border-bottom: 1px solid #000;
   padding-bottom: 50px;
 }
 
+.signUp {
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+}
+
 .signIn h2, .signUp h2 {
   color: #00d025;
+}
+
+.signInForm, .signUpForm {
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 760px) {
