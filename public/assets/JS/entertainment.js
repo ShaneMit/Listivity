@@ -4,8 +4,8 @@ function cardBody(apiTab, data, title, desc, type) {
   let activitiesElem = document.createElement('div')
   activitiesElem.className = 'card d-flex flex-column justify-content-center'
   activitiesElem.id = `${apiTab}-${data.id}`
-  activitiesElem.innerHTML =   `
-      <div class="card-body">
+  activitiesElem.innerHTML = `
+      <div class="card-body text-center">
         <div class="card-info">
         <h3 class="card-title">${title}</h3>
         <p class="card-description">${desc}</p>
@@ -28,10 +28,10 @@ function cardBody(apiTab, data, title, desc, type) {
           </svg>
         </div>
         `
-    document.getElementById(`${apiTab}List`).appendChild(activitiesElem);
-    document.getElementById(`${apiTab}Name`).value = '';
-    document.getElementById(`${apiTab}Desc`).value = '';
-    document.getElementById(`${apiTab}Category`).value = '';
+  document.getElementById(`${apiTab}List`).appendChild(activitiesElem);
+  document.getElementById(`${apiTab}Name`).value = '';
+  document.getElementById(`${apiTab}Desc`).value = '';
+  document.getElementById(`${apiTab}Category`).value = '';
 };
 
 document.getElementById('signOut').addEventListener('click', event => {
@@ -44,18 +44,15 @@ if (!localStorage.getItem('user')) {
   axios.get(`/api/users/${localStorage.getItem('user')}`)
     .then(({ data }) => {
       for (const activity in data.activities) {
-        console.log(activity)
         cardBody('activities', data.activities[activity], data.activities[activity].name, data.activities[activity].description, data.activities[activity].category)
       }
       for (const eat in data.eats) {
-        console.log(eat)
         cardBody('eats', data.eats[eat], data.eats[eat].name, data.eats[eat].description, data.eats[eat].category)
       }
       for (const entertain in data.entertains) {
-        console.log(entertain)
         cardBody('entertains', data.entertains[entertain], data.entertains[entertain].name, data.entertains[entertain].description, data.entertains[entertain].category)
       }
-    })   
+    })
 }
 
 
@@ -64,15 +61,11 @@ document.querySelectorAll('.nav-link').forEach(tab => {
   tab.addEventListener('click', function (event) {
     if (event.target.textContent === 'Entertain') {
       apiTab = 'entertains'
-      console.log(apiTab)
     } else if (event.target.textContent === 'Dining') {
       apiTab = 'eats'
-      console.log(apiTab)
     } else if (event.target.textContent === 'Activities') {
       apiTab = 'activities'
-      console.log(apiTab)
     };
-    console.log(apiTab);
   });
 });
 
@@ -93,7 +86,6 @@ function addItem() {
     userId: localStorage.getItem('user')
   })
     .then(({ data }) => {
-      console.log(data)
       cardBody(apiTab, data, title, desc, type)
     })
 
@@ -111,9 +103,6 @@ let editCard = function (id) {
 }
 
 let saveEdit = function (id) {
-  console.log(document.getElementById('editName').value)
-  console.log(id)
-  console.log(apiTab)
   let card = document.getElementById(`${apiTab}-${id}`)
   let cardTitle = card.getElementsByTagName('h3')
   let cardText = card.getElementsByTagName('p')
@@ -144,3 +133,30 @@ let deleteActivity = function (id) {
     .catch(err => console.error(err))
 }
 
+document.getElementById('shuffleButtons').addEventListener('click', function () {
+
+  document.getElementById('randomModalBody').innerHTML = "";
+
+  let activitiesList = document.getElementById('activitiesList').children;
+  let eatsList = document.getElementById('eatsList').children;
+  let entertainsList = document.getElementById('entertainsList').children;
+
+  let randomCategories = [];
+
+  if (activitiesList.length >= 1) {
+    randomCategories.push(activitiesList);
+  }
+  if (eatsList.length >= 1) {
+    randomCategories.push(eatsList);
+  }
+  if (entertainsList.length >= 1) {
+    randomCategories.push(entertainsList);
+  }
+
+  let categoryChoice = randomCategories[Math.floor(Math.random() * randomCategories.length)];
+
+  let cardChoice = categoryChoice[Math.floor(Math.random() * categoryChoice.length)];
+
+  document.getElementById('randomModalBody').appendChild(cardChoice);
+
+});
