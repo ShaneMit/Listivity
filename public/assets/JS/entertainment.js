@@ -157,6 +157,5 @@ document.getElementById('shuffleButtons').addEventListener('click', function () 
 
   let cardChoice = categoryChoice[Math.floor(Math.random() * categoryChoice.length)];
 
-  document.getElementById('randomModalBody').appendChild(cardChoice);
-
+  document.getElementById('randomModalBody').innerHTML = cardChoice.innerHTML;
 });
