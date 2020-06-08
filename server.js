@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const { join } = require('path')
 
@@ -14,5 +15,5 @@ require('./models')
 
 require('./connection')
   .sync()
-  .then(() => app.listen(3000, () => console.log('http://localhost:3000')))
+  .then(() => app.listen(process.env.PORT || 3000, () => console.log('http://localhost:3000')))
   .catch(err => console.error(err))
