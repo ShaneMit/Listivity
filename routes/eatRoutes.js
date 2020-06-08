@@ -1,5 +1,5 @@
-const router = require('express').Router()
-const { User, Activity, Eat, Entertain } = require('../models')
+const router = require('express').Router();
+const { User, Activity, Eat, Entertain } = require('../models');
 
 //CRUD APPLICATION ROUTES BELOW
 // GET all activities
@@ -8,32 +8,35 @@ router.get('/eats', (req, res) => {
   Eat.findAll()
     .then(eats => res.json(eats))
     .catch(err => console.error(err))
-})
+});
 
+// GET eats activity based on user's uniqueId 
 router.get('/eats/:id', (req, res) => {
   Eat.findOne({ id: req.params.id })
     .then(eat => res.json(eat))
     .catch(err => console.error(err))
-})
+});
 
+// ADD an eats activity 
 router.post('/eats', (req, res) => {
   Eat.create(req.body)
     .then((eat) => res.json(eat))
     .catch(err => console.error(err))
-})
+});
 
+// EDIT an eats activity in a user's database
 router.put('/eats/:id', (req, res) => {
   Eat.update(req.body, { where: { id: req.params.id } })
     .then(() => res.sendStatus(200))
     .catch(err => console.error(err))
-})
+});
 
 // DELETE one user
 router.delete('/eats/:id', (req, res) => {
   Eat.destroy({ where: { id: req.params.id } })
     .then(() => res.sendStatus(200))
     .catch(err => console.error(err))
-})
+});
 
 //export router out
 module.exports = router
