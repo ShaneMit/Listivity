@@ -104,3 +104,31 @@
 .signIn h2, .signUp h2 {
   color: #00d025;
 }
+
+@media screen and (max-width: 760px) {
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .nav-links {
+    flex-direction: column !important;
+    width: 100%;
+  }
+
+  #shuffleButtons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+  }
+
+  .navGetActivityBtn {
+    margin-right: 0;
+  }
+
+  .bi-shuffle {
+    margin-right: 0;
+  }
+
+}

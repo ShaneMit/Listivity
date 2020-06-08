@@ -100,6 +100,7 @@ let editCard = function (id) {
   document.getElementById('editName').value = cardTitle[0].textContent
   document.getElementById('editDesc').value = cardText[0].textContent
   document.getElementById('editCategory').value = cardText[1].textContent
+  document.getElementById('editModalCenter').classList.add('animate__animated', 'animate__backInRight');
 }
 
 let saveEdit = function (id) {
@@ -135,6 +136,10 @@ let deleteActivity = function (id) {
 
 document.getElementById('shuffleButtons').addEventListener('click', function () {
 
+  document.getElementById('shuffleIcon').classList = 'animate__animated animate__shakeX';
+  document.getElementById('logo').classList = 'animate__animated animate__shakeX';
+  document.getElementById('navGetActivityBtn').classList.add('animate__animated', 'animate__shakeX');
+
   document.getElementById('randomModalBody').innerHTML = "";
 
   let activitiesList = document.getElementById('activitiesList').children;
@@ -158,4 +163,11 @@ document.getElementById('shuffleButtons').addEventListener('click', function () 
   let cardChoice = categoryChoice[Math.floor(Math.random() * categoryChoice.length)];
 
   document.getElementById('randomModalBody').innerHTML = cardChoice.innerHTML;
+
+  setTimeout(function () {
+    document.getElementById('shuffleIcon').classList = '';
+    document.getElementById('logo').classList = '';
+    document.getElementById('navGetActivityBtn').classList.remove('animate__animated animate__shakeX');
+  }, 2000)
+
 });
