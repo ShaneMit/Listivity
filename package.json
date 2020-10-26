@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShaneMit/Project2.git"
+    "url": "git+https://github.com/ShaneMit/Listivity.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ShaneMit/Project2/issues"
+    "url": "https://github.com/ShaneMit/Listivity/issues"
   },
-  "homepage": "https://github.com/ShaneMit/Project2#readme",
+  "homepage": "https://github.com/ShaneMit/Listivity#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
